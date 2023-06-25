@@ -4,11 +4,11 @@ const Actor = require('../models/Actor');
 
 require('../models');
 
-const API_URL = '/api/v1/actors';
+const DATABASE_URL = '/api/v1/actors';
 
 let actorId;
 
-test("POST -> API_URL, should return status code 201 and res.body.firstName === actor.firstName", async () => {
+test("POST -> DATABASE_URL, should return status code 201 and res.body.firstName === actor.firstName", async () => {
   const actor = {
     firstName: 'Jennifer',
     lastName: 'Lawrence',
@@ -18,7 +18,7 @@ test("POST -> API_URL, should return status code 201 and res.body.firstName === 
   };
 
   const res = await request(app)
-    .post(API_URL)
+    .post(DATABASE_URL)
     .send(actor);
 
   actorId = res.body.id;
@@ -27,4 +27,3 @@ test("POST -> API_URL, should return status code 201 and res.body.firstName === 
   expect(res.body.firstName).toBe(actor.firstName);
 });
 
-test("")
