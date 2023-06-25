@@ -27,3 +27,11 @@ test("POST -> DATABASE_URL, should return status code 201 and res.body.firstName
   expect(res.body.firstName).toBe(actor.firstName);
 });
 
+test("GET -> 'DATABASE_URL'should return status code 200 and res.body.length === 1", async()=>{
+  const res = await request(app)
+  .get(DATABASE_URL)
+
+expect(res.status).toBe(200)
+expect(res.body).toHaveLength(1)
+})
+
