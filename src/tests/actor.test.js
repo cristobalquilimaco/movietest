@@ -35,3 +35,15 @@ expect(res.status).toBe(200)
 expect(res.body).toHaveLength(1)
 })
 
+test("PUT ->'DATABASE_URL', should return 200 and res.body.name === actor.firstName", async()=>{
+  const actor = {
+    firstName:"Jennifer"
+  }
+  const res= await request(app)
+  .put(`${DATABASE_URL}/${actorId}`)
+  .send(actor)
+
+  expect(res.status).toBe(200)
+  expect(res.body.firstName).toBe(actor.firstName)
+})
+
